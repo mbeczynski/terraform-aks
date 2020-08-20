@@ -10,13 +10,24 @@ terraform init -backend-config="storage_account_name=<YourAzureStorageAccountNam
    ```
 export TF_VAR_client_id=<service-principal-appid>
 export TF_VAR_client_secret=<service-principal-password>
-     ```
-3.Double check infrastructure using following command <optional>
-    ``` 
+   ```
+3.Double check infrastructure using following command (optional)
+   ``` 
   terraform plan -out out.plan
-    ```
+   ```
 4.Create a resources
    ```
-terraform apply out.plan
+  terraform apply out.plan
    ```
 
+## Resize Cluster
+1.Scale cluster using a following command
+```
+az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1 --nodepool-name <your node pool name>
+```
+
+
+## Run Docker 
+```
+docker run -v ./t_1.json:/data/t_1.json <dockerimage> /data/t_1.json
+```
